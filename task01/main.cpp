@@ -3,7 +3,7 @@
 
 int main()
 {
-    Complex a(3.0), b(2.0), c(1.0, 1.0);
+    Complex a, b(2.0), c(1.0, 1.0);
 
     std::cin >> a;
     std::cout << a << ", " << b << ", abs: " << b.abs() << std::endl;
