@@ -1,4 +1,6 @@
 #include <string>
+#include <map>
+#include <memory>
 
 class FileIndexer
 {
@@ -12,6 +14,8 @@ public:
      * Store file_info as shared_ptr. Do not use pure pointers inside this class.
      * Return number of files found.
      */
+    void getfiles (string path);
+    
     unsigned Build();
 
     enum SortingType {
@@ -24,6 +28,7 @@ public:
      * Print file list to cout unsorted/sorted.
      * Use table-view to print all info about files.
      */
+    void print_file(std:shared_ptr<file_info> file);
     void PrintFiles();
     void PrintFilesSorted(SortingType type);
 
@@ -46,5 +51,6 @@ public:
     bool DeleteFile(const std::string &path);
 
 private:
-    /* ... */
+    std::string root_path;
+    std::map<std::string, std::shared_ptr<file_info>> data;
 };
