@@ -1,3 +1,17 @@
+template <typename T>
+class Storage
+{
+public:
+    Storage() = default;
+    Storage(const T &val);
+    ~Storage();
+
+    void SetVal(const T &val);
+    T GetVal();
+private:
+    T m_val;
+};
+
 template <>
 class Storage<char*>
 {
@@ -15,7 +29,7 @@ public:
         int l;
         l = strlen(val);
         m_val = new char [l];
-        strcpy (m_val;val);
+        strcpy (m_val, val);
         return m_val;
     };
     char* GetVal()
@@ -31,6 +45,6 @@ Storage<char*>::Storage(const char* val)
     int l;
     l = strlen(val);
     m_val = new char [l];
-    strcpy (m_val;val);
+    strcpy (m_val, val);
     return m_val;
 }
