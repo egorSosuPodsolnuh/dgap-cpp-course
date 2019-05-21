@@ -13,7 +13,7 @@ ArrayQueue::ArrayQueue(int n)
 }
 ArrayQueue::~ArrayQueue()
 {
-	delete(dat);
+	delete[] dat;
 }
 void ArrayQueue::enqueue(data &c)
 {	
@@ -28,11 +28,11 @@ data ArrayQueue::denqueue()
 	x = dat[(hade + 1)%lar] ;
 	hade = (hade + 1) % lar;
 	lon--;
-	return(x);
+	return x;
 }	
 unsigned ArrayQueue::getLength()
 {
-	return(lon);
+	return lon;
 }
 void ListQueue::enqueue(data &c)
 {	
@@ -53,7 +53,7 @@ ListQueue::~ListQueue()
 	{
 		List *l = NULL;
 		l = first->nod;
-		delete(first);
+		delete first;
 		first = l;
 		lon--;
 	}
@@ -67,10 +67,11 @@ data ListQueue::denqueue()
 	delete first;
 	first = n;
 	lon--;
-	return(x);
+	return x;
 }
+
 unsigned ListQueue::getLength()
 {
-	return(lon);
+	return lon;
 }
 	
