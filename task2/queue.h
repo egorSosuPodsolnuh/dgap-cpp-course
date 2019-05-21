@@ -1,31 +1,35 @@
 typedef int data;
 class BasicQueue	
 {
-	public:
-		virtual void enqueue(data &c) = 0;
-		virtual data  denqueue() = 0;
-		virtual unsigned getLength() = 0;	
+public:
+	virtual void enqueue(data &c) = 0;
+	virtual data  denqueue() = 0;
+	virtual unsigned getLength() = 0;
+
+	virtual ~BasicQueue() = 0;
 };
+
 class ArrayQueue: public BasicQueue
 {
-	private:
-		int lar;
-		int hade;
-		int tale;
-		data * dat;
-		int lon;
-	public:	
+private:
+	int lar;
+	int hade;
+	int tale;
+	data * dat;
+	int lon;
+
+public:	
 	ArrayQueue(int n);
-	~ArrayQueue();
-  	void  enqueue(data &c);
-	data  denqueue();	
-	unsigned getLength();	
+	~ArrayQueue() override;
+  	void  enqueue(data &c) override;
+	data  denqueue() override;	
+	unsigned getLength() override;
 };
 
 class ListQueue: public BasicQueue
 {
-	private:
-	typedef struct List
+private:
+	struct List
 	{
 		data val;
 		List *nod;
@@ -33,10 +37,11 @@ class ListQueue: public BasicQueue
 	List *first;
 	List *last;
 	int lon;
-	public:
-	void  enqueue(data &c);
+
+public:
+	void  enqueue(data &c) override;
 	ListQueue();
-	~ListQueue();
-	data denqueue();
-	unsigned getLength();
+	~ListQueue() override;
+	data denqueue() override;
+	unsigned getLength() override;
 };
